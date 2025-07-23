@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TabledataService } from '../service/tabledata.service';
+import { Tabledata } from '../models/tabledata';
 
 @Component({
   selector: 'app-table',
@@ -6,20 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  tabledata=[
-    {
-      id:1,
-      name:'devi',
-      email:'devi.bangaru24@gmail.com',
-      branch:'ece',
-      mobilenumber:9234507899
-    },
-    {
-      id:2,
-      name:'durga',
-      email:'devi.bangaru24@gmail.com',
-      branch:'ece',
-      mobilenumber:9234507899
-    }
-  ]
+  tabledata:Tabledata[]=[];
+constructor(private service:TabledataService) {}
+ngOnInit() {
+  this.service.onsubmit().subscribe(data => this.tabledata=data);
+}
 }
