@@ -12,4 +12,10 @@ export class TabledataService {
   onsubmit():Observable<Tabledata[]> {
     return this.http.get<Tabledata[]>(`${this.baseurl}`)
   }
+  add(tabledata:Tabledata):Observable<any> {
+return this.http.post(`${this.baseurl}`,tabledata);
+  }
+  delete(id:number):Observable<any> {
+    return this.http.delete(`${this.baseurl}/id/=${id}`);
+  }
 }

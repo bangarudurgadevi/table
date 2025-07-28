@@ -9,8 +9,23 @@ import { Tabledata } from '../models/tabledata';
 })
 export class TableComponent {
   tabledata:Tabledata[]=[];
+  user:Tabledata=new Tabledata();
 constructor(private service:TabledataService) {}
 ngOnInit() {
   this.service.onsubmit().subscribe(data => this.tabledata=data);
 }
+addition(){
+  this.service.add(this.user).subscribe(()=> {
+    alert("successfully added")
+  });
 }
+delete(id:number){
+  this.service.delete(id).subscribe(()=>{
+    alert("successfully deleted")
+  });
+}
+
+}
+  
+
+
